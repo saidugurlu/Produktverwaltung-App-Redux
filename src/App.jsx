@@ -1,11 +1,17 @@
-function App() {
-  
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Product from './pages/Product';
+import Header from "./components/Header";
 
+
+function App() {  
   return (
     <div>
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+      <Router>
+       <Header/>
+        <Routes>
+          <Route index path="/" element={<Product/>} />
+        </Routes>
+      </Router>
     </div>
   )
 }
