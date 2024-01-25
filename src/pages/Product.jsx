@@ -1,9 +1,15 @@
-import ProductCard from "../components/ProductCard"
+import { useSelector } from "react-redux";
+import ProductCard from "../components/ProductCard";
 
 const Product = () => {
+  const { modal } = useSelector((state) => state.modal);
+  
+  console.log(modal, "modal");
   return (
-    < ProductCard/>
-  )
-}
+    <div className="">
+      <ProductCard />
+    </div>
+  );
+};
 
-export default Product
+export default Product;
