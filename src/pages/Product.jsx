@@ -5,11 +5,11 @@ import Modal from "../components/Modal";
 const Product = () => {
   const { modal } = useSelector((state) => state.modal);
 
-  console.log(modal, "modal");
+  const btnFunc = () => {}
   return (
     <div className="">
       <ProductCard />
-      {modal && <Modal/> }
+      {modal && <Modal  title={"Produkt erstellen"} btnText={"Erstellen"} btnFunc={btnFunc} /> }
     </div>
   );
 };
