@@ -25,7 +25,7 @@ const Modal = ({ title, content, btnText, btnFunc }) => {
       <div className="w-1/3 bg-white shadow-lg rounded-md p-4">
         <div className="border-b py-3 flex items-center justify-between">
           <div className="text-2xl">{title}</div>
-          <CgClose size={24} />
+          <CgClose size={20} />
         </div>
         <Input
           type={"text"}
