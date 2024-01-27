@@ -1,6 +1,7 @@
 import { CgClose } from "react-icons/cg";
 import Input from "./Input";
 import { useState } from "react";
+import Button from "./Button";
 
 const Modal = ({ title, content, btnText, btnFunc }) => {
   const [productInfo, setProductInfo] = useState({
@@ -8,9 +9,9 @@ const Modal = ({ title, content, btnText, btnFunc }) => {
     price: "",
     url: "",
   });
-  console.log(productInfo);
+
   const onChangeFunc = (e, type) => {
-    if (type == "url") {
+    if (type === "url") {
       setProductInfo((prev) => ({
         ...prev,
         [e.target.name]: URL.createObjectURL(e.target.files[0]),
@@ -28,26 +29,26 @@ const Modal = ({ title, content, btnText, btnFunc }) => {
           <CgClose size={20} />
         </div>
         <Input
-          type={"text"}
-          placeholder={"Produkt hinzufügen"}
-          name={"name"}
-          id={"name"}
+          type="text"
+          placeholder="Produkt hinzufügen"
+          name="name"
+          id="name"
           onChange={(e) => onChangeFunc(e, "name")}
         />
         <Input
-          type={"number"}
-          placeholder={"Preis hinzufügen"}
-          name={"price"}
-          id={"price"}
+          type="number"
+          placeholder="Preis hinzufügen"
+          name="price"
+          id="price"
           onChange={(e) => onChangeFunc(e, "price")}
         />
         <Input
-          type={"file"}
-          placeholder={"Bild hinzufügen"}
-          name={"url"}
-          id={"url"}
+          placeholder="Bild hinzufügen"
+          name="url"
+          id="url"
           onChange={(e) => onChangeFunc(e, "url")}
         />
+        <Button btnText={btnText} onClick={btnFunc} />
       </div>
     </div>
   );

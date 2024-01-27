@@ -1,9 +1,14 @@
-import React from 'react'
-
-const Button = (onClick, btnText) => {
+const Button = ({ onClick, btnText }) => {
   return (
- <button onClick={onclick}>{btnText}</button>
-  )
-}
+    <button
+      className="w-full h-10 bg-indigo-600 text-white flex items-center justify-center"
+      onClick={onclick}
+    >
+      {btnText}
+    </button>
+  );
+  
+};
 
-export default Button
+
+export default Button;
