@@ -28,28 +28,7 @@ const Modal = ({ title, content, btnText, btnFunc }) => {
           <div className="text-2xl">{title}</div>
           <CgClose size={20} />
         </div>
-        <Input
-          type="text"
-          placeholder="Produkt hinzufügen"
-          name="name"
-          id="name"
-          onChange={(e) => onChangeFunc(e, "name")}
-        />
-        <Input
-          type="number"
-          placeholder="Preis hinzufügen"
-          name="price"
-          id="price"
-          onChange={(e) => onChangeFunc(e, "price")}
-        />
-        <Input
-          type="file"
-          placeholder="Bild hinzufügen"
-          name="url"
-          id="url"
-          onChange={(e) => onChangeFunc(e, "url")}
-        />
-        <Button btnText={btnText} onClick={btnFunc} />
+        {content}
       </div>
     </div>
   );
