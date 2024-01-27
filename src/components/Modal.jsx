@@ -46,7 +46,7 @@ const Modal = ({ title, content, btnText, btnFunc }) => {
           placeholder={"Bild hinzufügen"}
           name={"url"}
           id={"url"}
-          onChange={(e) => onChangeFunc(e, "filurle")}
+          onChange={(e) => onChangeFunc(e, "url")}
         />
       </div>
     </div>
