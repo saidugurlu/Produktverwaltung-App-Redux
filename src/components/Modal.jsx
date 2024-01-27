@@ -43,6 +43,7 @@ const Modal = ({ title, content, btnText, btnFunc }) => {
           onChange={(e) => onChangeFunc(e, "price")}
         />
         <Input
+          type="file"
           placeholder="Bild hinzufügen"
           name="url"
           id="url"
