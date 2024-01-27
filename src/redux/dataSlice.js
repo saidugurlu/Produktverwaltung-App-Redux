@@ -9,7 +9,10 @@ export const dataSlice = createSlice({
   name: 'data',
   initialState,
   reducers: {
+    createDataFunc: (state, action) => {
+state.data = [...state.data, action.payload]
   },
+}
 })
 
 export const {} = dataSlice.actions
