@@ -1,3 +1,4 @@
+import { MdOutlineEditNote } from "react-icons/md";
 const ProductCard = ({ dt }) => {
   return (
     <div className="w-[200px] h-[200px] relative m-2 rounded-md">
@@ -5,6 +6,9 @@ const ProductCard = ({ dt }) => {
       <div className="absolute left-0 bottom-0 bg-indigo-600 text-white w-full px-2">
         <div className="text-lg font-semibold">{dt?.name}</div>
         <div>{dt?.price}€</div>
+      </div>
+      <div className=" absolute right-0.5 bottom-0.5">
+        <MdOutlineEditNote color={"white"} size={20} cursor={"pointer"} />
       </div>
     </div>
   );
