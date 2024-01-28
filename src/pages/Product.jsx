@@ -64,12 +64,11 @@ const Product = () => {
 
   return (
     <div>
-      <div>
+      <div className="flex flex-wrap gap-10 justify-center">
         {data?.map((dt, i) => (
           <ProductCard key={i} dt={dt} />
         ))}
       </div>
-      <ProductCard />
       {modal && <Modal content={contentModal} title={"Produkt erstellen"} />}
     </div>
   );
