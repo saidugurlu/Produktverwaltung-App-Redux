@@ -4,9 +4,12 @@ import Modal from "../components/Modal";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { useState } from "react";
+import { modalFunc } from "../redux/modalSlice";
+import { createDataFunc } from "../redux/dataSlice";
 
 const Product = () => {
   const { modal } = useSelector((state) => state.modal);
+  const { data } = useSelector((state) => state.data);
   const dispatch = useDispatch();
   const [productInfo, setProductInfo] = useState({
     name: "",
@@ -24,8 +27,12 @@ const Product = () => {
       setProductInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
   };
-  const buttonFunc = () => {
-    dispatch(createDataFunc());
+
+  console.log(data, "data");
+
+  const btnFunc = () => {
+    dispatch(createDataFunc(productInfo));
+    dispatch(modalFunc());
   };
 
   const contentModal = (
@@ -51,14 +58,19 @@ const Product = () => {
         id="url"
         onChange={(e) => onChangeFunc(e, "url")}
       />
-      <Button btnText={"Erstellen"} onClick={buttonFunc} />
+      <Button btnText={"Erstellen"} onClick={btnFunc} />
     </>
   );
 
   return (
-    <div className="">
+    <div>
+      <div>
+        {data?.map((dt, i) => (
+          <ProductCard key={i} dt={dt} />
+        ))}
+      </div>
       <ProductCard />
-      {modal && <Modal content={contentModal} title="Produkt erstellen" />}
+      {modal && <Modal content={contentModal} title={"Produkt erstellen"} />}
     </div>
   );
 };

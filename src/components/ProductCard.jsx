@@ -1,7 +1,13 @@
-const ProductCard = () => {
+const ProductCard = ({ dt }) => {
   return (
-    <div>ProductCard</div>
-  )
-}
+    <div className="w-[200px] h-[200px] relative m-2 rounded-md">
+      <img src={dt?.url} className="w-full h-full rounded-md" />
+      <div className="absolute left-0 bottom-0 bg-indigo-600 text-white w-full px-2">
+        <div className="text-lg font-semibold">{dt?.name}</div>
+        <div className="text-lg">{dt?.price}€</div>
+      </div>
+    </div>
+  );
+};
 
-export default ProductCard
+export default ProductCard;
