@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { MdOutlineEditNote } from "react-icons/md";
+import { useDispatch } from 'react-redux';
+import { deleteDataFunc } from "../redux/dataSlice";
 const ProductCard = ({ dt }) => {
   const [openEdit, setOpenEdit] = useState(false);
+  const dispatch = useDispatch();
   return (
     <div className="w-[200px] h-[200px] relative m-2 rounded-md">
       <img src={dt?.url} className="w-full h-full rounded-md" />
@@ -17,7 +20,7 @@ const ProductCard = ({ dt }) => {
       </div>
       {openEdit && (
         <div className="absolute bottom-0 left-0 w-full h-full bg-gray-800 opacity-70 flex flex-col justify-center items-center">
-          <div className="text-white text-l shadow-md">Löschen</div>
+          <div onClick={() => dispatch(deleteDataFunc(dt?.id))} className="text-white text-l shadow-md">Löschen</div>
 
           <div className="text-white text-l shadow-md mt-2">
             Bearbeiten
