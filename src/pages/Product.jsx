@@ -3,14 +3,17 @@ import ProductCard from "../components/ProductCard";
 import Modal from "../components/Modal";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { modalFunc } from "../redux/modalSlice";
-import { createDataFunc } from "../redux/dataSlice";
+import { createDataFunc, updateDataFunc } from "../redux/dataSlice";
+import { useLocation } from "react-router-dom";
 
 const Product = () => {
   const { modal } = useSelector((state) => state.modal);
   const { data } = useSelector((state) => state.data);
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useLocation();
   const [productInfo, setProductInfo] = useState({
     name: "",
     price: "",
@@ -28,6 +31,14 @@ const Product = () => {
     }
   };
 
+  let loc = location?.search.split("=")[1];
+
+  useEffect(() => {
+    if (loc) {
+      setProductInfo(data.find((dt) => dt.id === Number(loc)));
+    }
+  }, [loc]);
+
   console.log(data, "data");
 
   const btnFunc = () => {
@@ -35,9 +46,18 @@ const Product = () => {
     dispatch(modalFunc());
   };
 
+  const btnUpdateFunc = () => {
+    dispatch(updateDataFunc({ ...productInfo, id: loc }));
+    dispatch(modalFunc());
+    navigate("/");
+    
+  };
+
   const contentModal = (
     <>
       <Input
+        label="Name"
+        value={productInfo.name}
         type="text"
         placeholder="Produkt hinzufügen"
         name="name"
@@ -45,6 +65,8 @@ const Product = () => {
         onChange={(e) => onChangeFunc(e, "name")}
       />
       <Input
+        label="Preis"
+        value={productInfo.price}
         type="number"
         placeholder="Preis hinzufügen"
         name="price"
@@ -52,13 +74,18 @@ const Product = () => {
         onChange={(e) => onChangeFunc(e, "price")}
       />
       <Input
+        label="Bild"
+        // value={productInfo.url} "When I give it, an error occurs."
         type="file"
         placeholder="Bild hinzufügen"
         name="url"
         id="url"
         onChange={(e) => onChangeFunc(e, "url")}
       />
-      <Button btnText={"Erstellen"} onClick={btnFunc} />
+      <Button
+        btnText={loc ? "Produkt bearbeiten" : "Produkt erstellen"}
+        onClick={loc ? btnUpdateFunc : btnFunc}
+      />
     </>
   );
 
@@ -69,7 +96,12 @@ const Product = () => {
           <ProductCard key={i} dt={dt} />
         ))}
       </div>
-      {modal && <Modal content={contentModal} title={"Produkt erstellen"} />}
+      {modal && (
+        <Modal
+          content={contentModal}
+          title={loc ? "Produkt bearbeiten" : "Produkt erstellen"}
+        />
+      )}
     </div>
   );
 };
