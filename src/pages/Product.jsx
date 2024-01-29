@@ -42,6 +42,11 @@ const Product = () => {
   console.log(data, "data");
 
   const btnFunc = () => {
+    setProductInfo({
+      name: "",
+      price: "",
+      url: "",
+    });
     dispatch(createDataFunc({ ...productInfo, id: data?.length + 1 }));
     dispatch(modalFunc());
   };
@@ -50,13 +55,18 @@ const Product = () => {
     dispatch(updateDataFunc({ ...productInfo, id: loc }));
     dispatch(modalFunc());
     navigate("/");
+    setProductInfo({
+      name: "",
+      price: "",
+      url: "",
+    });
   };
 
   const contentModal = (
     <>
       <Input
         label="Name"
-        value={productInfo.name}
+        value={productInfo.name || ""}
         type="text"
         placeholder="Produkt hinzufügen"
         name="name"
@@ -65,7 +75,7 @@ const Product = () => {
       />
       <Input
         label="Preis"
-        value={productInfo.price}
+        value={productInfo.price || ""}
         type="number"
         placeholder="Preis hinzufügen"
         name="price"
@@ -74,7 +84,6 @@ const Product = () => {
       />
       <Input
         label="Bild"
-        // value={productInfo.url} "When I give it, an error occurs."
         type="file"
         placeholder="Bild hinzufügen"
         name="url"
@@ -87,6 +96,7 @@ const Product = () => {
       />
     </>
   );
+  
 
   const filteredItems = data?.filter((dt) =>
     dt.name.toLowerCase().includes(keyword.toLowerCase())
