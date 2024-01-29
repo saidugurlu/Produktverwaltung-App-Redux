@@ -6,14 +6,14 @@ import Button from "../components/Button";
 import { useEffect, useState } from "react";
 import { modalFunc } from "../redux/modalSlice";
 import { createDataFunc, updateDataFunc } from "../redux/dataSlice";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Product = () => {
   const { modal } = useSelector((state) => state.modal);
   const { data } = useSelector((state) => state.data);
   const dispatch = useDispatch();
   const location = useLocation();
-  const navigate = useLocation();
+  const navigate = useNavigate();
   const [productInfo, setProductInfo] = useState({
     name: "",
     price: "",
@@ -50,7 +50,6 @@ const Product = () => {
     dispatch(updateDataFunc({ ...productInfo, id: loc }));
     dispatch(modalFunc());
     navigate("/");
-    
   };
 
   const contentModal = (
