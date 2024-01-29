@@ -20,9 +20,9 @@ const ProductCard = ({ dt }) => {
       </div>
       {openEdit && (
         <div className="absolute bottom-0 left-0 w-full h-full bg-gray-800 opacity-70 flex flex-col justify-center items-center">
-          <div onClick={() => dispatch(deleteDataFunc(dt?.id))} className="text-white text-l shadow-md">Löschen</div>
+          <div onClick={() => dispatch(deleteDataFunc(dt?.id))} className="cursor-pointer hover:bg-gray-700 hover:px-5 text-white text-l shadow-md">Löschen</div>
 
-          <div className="text-white text-l shadow-md mt-2">
+          <div className="cursor-pointer hover:bg-gray-700 hover:px-5 text-white text-l shadow-md mt-2">
             Bearbeiten
           </div>
         </div>
