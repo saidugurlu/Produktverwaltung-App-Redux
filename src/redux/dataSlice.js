@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
   data: [],
+  keyword: "",
 }
 
 export const dataSlice = createSlice({
@@ -22,10 +23,13 @@ state.data = [...state.data, action.payload]
       },
       updateDataFunc: (state, action) => {
         state.data = [...state.data.map(dt => dt.id == action.payload.id ? ({...dt, ...action.payload}) : dt)]
-          },  
+          }, 
+          searchDataFunc: (state, action) => {
+            state.keyword = action.payload
+              }, 
 },
 })
 
-export const {createDataFunc, deleteDataFunc,updateDataFunc, sortingDataFunc } = dataSlice.actions
+export const {createDataFunc, deleteDataFunc,updateDataFunc, sortingDataFunc, searchDataFunc} = dataSlice.actions
 
 export default dataSlice.reducer
