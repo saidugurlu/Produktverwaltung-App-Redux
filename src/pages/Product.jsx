@@ -64,7 +64,7 @@ const Product = () => {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-10">
+      <div className="flex flex-wrap items-center gap-10">
         {data?.map((dt, i) => (
           <ProductCard key={i} dt={dt} />
         ))}
