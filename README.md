@@ -1,8 +1,18 @@
-# React + Vite
+# Produktverwaltung App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dieses Projekt wurde unter Verwendung von React und Redux entwickelt und insbesondere mit Redux Toolkit integriert.
 
-Currently, two official plugins are available:
+## Funktionen
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Benutzer können neue Produkte hinzufügen:
+  - Produktname, Preis und die Möglichkeit, Dateien/Bilder zum Produkt hinzuzufügen.
+- Benutzer können Änderungen an ihren eingetragenen Produkten vornehmen oder sie löschen.
+- Produkte können nach Preis sortiert werden.
+- Die Benutzer können nach Produktname suchen.
+
+## Technologien
+
+- React
+- Redux Toolkit
+- React Hooks (Intensiv verwendet)
+- Tailwind CSS (Für das Styling verwendet)
